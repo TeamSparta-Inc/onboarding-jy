@@ -1,0 +1,30 @@
+version: 0.2
+
+env:
+  git-credential-helper: yes
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - echo `pwd`
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - cd docker
+      - make build env=$ENV
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - make push env=$ENV
+      - printf '[{"name":"santoryu-nginx-prod","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/santoryu-nginx-prod:latest > imagedefinitions.$ENV.json
+
+artifacts:
+  files:
+    - docker/imagedefinitions.$ENV.json
+    - aws/taskdef.$ENV.json
+    - aws/appspec.$ENV.yaml
