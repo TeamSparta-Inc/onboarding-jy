@@ -24,7 +24,7 @@ ass:
 build:
 	make ass
 	@docker build -f _proxy.Dockerfile --build-arg ENV=$$env -t ${LOCAL_IMG_COMMIT_PROXY} .;
-	@docker build  -f _server.Dockerfile --build-arg ENV=$$env -t ${LOCAL_IMG_COMMIT_SERVER} ../;
+	@docker build -f _server.Dockerfile --build-arg ENV=$$env -t ${LOCAL_IMG_COMMIT_SERVER} ../;
 	@docker tag ${LOCAL_IMG_COMMIT_SERVER} ${LOCAL_IMG_LATEST_SERVER};
 	@docker tag ${LOCAL_IMG_COMMIT_PROXY} ${LOCAL_IMG_LATEST_PROXY};
 
@@ -44,7 +44,7 @@ run:
 
 
 push:
-	@aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 497217256558.dkr.ecr.ap-northeast-2.amazonaws.com
+	@aws ecr get-login-password --no-include-email --region ap-northeast-2 | docker login --username AWS --password-stdin 497217256558.dkr.ecr.ap-northeast-2.amazonaws.com
 	@docker push ${ECR_IMG_COMMIT_SERVER}
 	@docker push ${ECR_IMG_LATEST_SERVER}
 	@docker push ${ECR_IMG_COMMIT_PROXY}
