@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  santoryu-backend:
+    container_name: santoryu-backend-app
+    image: santoryu-backend-local:latest
+    volumes:
+      - $PWD/../src:/opt/app/src
+    networks:
+      - santoryu-backend-network
+    environment:
+      - ENV=local
+      - TZ=Asia/Seoul
+
+  proxy:
+    container_name: santoryu-nginx
+    image: santoryu-nginx-local:latest
+    restart: always
+    networks:
+      - santoryu-backend-network
+    ports:
+      - "80:80"
+
+networks:
+  santoryu-backend-network:
