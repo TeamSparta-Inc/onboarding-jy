@@ -44,7 +44,7 @@ run:
 
 
 push:
-	@aws ecr get-login-password --no-include-email --region ap-northeast-2 | docker login --username AWS --password-stdin 497217256558.dkr.ecr.ap-northeast-2.amazonaws.com
+	@aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 497217256558.dkr.ecr.ap-northeast-2.amazonaws.com
 	@docker push ${ECR_IMG_COMMIT_SERVER}
 	@docker push ${ECR_IMG_LATEST_SERVER}
 	@docker push ${ECR_IMG_COMMIT_PROXY}
