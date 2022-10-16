@@ -1,6 +1,6 @@
 #!make
 TAG                         := $$(git log -1 --pretty=format:%h)
-ECR_URI                     := 497217256558.dkr.ecr.ap-northeast-1.amazonaws.com
+ECR_URI                     := 497217256558.dkr.ecr.ap-northeast-2.amazonaws.com
 BASENAME_SEVER              := santoryu-backend
 BASENAME_PROXY              := santoryu-nginx
 NAME_SERVER                 := ${BASENAME_SEVER}-$$env# santoryu-backend-local
