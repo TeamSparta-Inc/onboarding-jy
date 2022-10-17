@@ -16,13 +16,8 @@ ECR_IMG_LATEST_SERVER       := ${ECR_ENDPOINT_SERVER}:latest
 ECR_IMG_COMMIT_PROXY        := ${ECR_ENDPOINT_PROXY}:${TAG}
 ECR_IMG_LATEST_PROXY        := ${ECR_ENDPOINT_PROXY}:latest
 
-ass:
-	@echo $$env;
-	@echo ${LOCAL_IMG_COMMIT_PROXY};
-	@echo ${LOCAL_IMG_COMMIT_SERVER};
-
 build:
-	make ass
+	@echo $$env;
 	@docker build -f _proxy.Dockerfile --build-arg ENV=$$env -t ${LOCAL_IMG_COMMIT_PROXY} .;
 	@docker build -f _server.Dockerfile --build-arg ENV=$$env -t ${LOCAL_IMG_COMMIT_SERVER} ../;
 	@docker tag ${LOCAL_IMG_COMMIT_SERVER} ${LOCAL_IMG_LATEST_SERVER};
