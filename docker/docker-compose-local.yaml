@@ -11,7 +11,7 @@ services:
     environment:
       - ENV=local
       - TZ=Asia/Seoul
-
+      - MONGO_URL=host.docker.internal
   proxy:
     container_name: santoryu-nginx
     image: santoryu-nginx-local:latest
@@ -20,6 +20,17 @@ services:
       - santoryu-backend-network
     ports:
       - "80:80"
+
+  santoryu-mongo:
+    container_name: santoryu-mongo
+    image: mongo:6.0
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - santoryu-backend-network
+    volumes:
+      - $PWD/../volumes/mongodb_data:/data/db
 
 networks:
   santoryu-backend-network:

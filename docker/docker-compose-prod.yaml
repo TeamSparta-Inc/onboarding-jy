@@ -9,6 +9,7 @@ services:
     environment:
       - ENV=local
       - TZ=Asia/Seoul
+      - MONGO_URL=localhost
 
   proxy:
     container_name: santoryu-nginx
@@ -18,6 +19,13 @@ services:
       - santoryu-backend-network
     ports:
       - "80"
+
+  santoryu-mongo:
+    container_name: santoryu-mongo
+    image: mongo:6.0
+    restart: always
+    ports:
+      - "27017:27017"
 
 networks:
   santoryu-backend-network:

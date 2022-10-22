@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>쉽지않다</title>
+        <link rel="shortcut icon" href="tiger.png">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main>
+            <div>
+                <img src='tiger.png' alt='mukae'/>
+                <br/>
+                <input id="input_text" type="text" placeholder="type text"/>
+                <button type='submit' onclick="save_text()"> 입력 </button>
+            </div>
+        </main>
+
+    <script>
+        const save_text = async () => {
+            const text_value = document.getElementById('input_text').value
+            // POST request using fetch()
+            const res = await fetch("/api", {
+                method: "POST",
+                headers: {"Content-type": "application/json; charset=UTF-8"},
+                body: JSON.stringify({
+                    text: text_value
+                }),
+            })
+            // json() converts the response's body from a ReadableStream to a json object.
+            // json() is asynchronous and therefore must be awaited
+            console.log(await res.json())
+        }
+    </script>
+    </body>
+</html>
