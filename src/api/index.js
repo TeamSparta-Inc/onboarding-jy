@@ -18,7 +18,7 @@ mongoose.connect(`mongodb://${MONGO_URL}:27017/dbsantoryu`, {
     console.log('Connected to MongoDB');
   })
   .catch(e => {
-    console.error('MongoDB connection fail', e);
+    console.error('MongoDB connection failed', e);
   });
 
 const start = () => {
