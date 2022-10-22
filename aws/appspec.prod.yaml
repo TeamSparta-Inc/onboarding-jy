@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:ap-northeast-2:497217256558:task-definition/santoryu-td:11"
         LoadBalancerInfo:
-          ContainerName: "santoryu-nginx-prod"
+          ContainerName: "santoryu-nignx-prod"
           ContainerPort: 80
