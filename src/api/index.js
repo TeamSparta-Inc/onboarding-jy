@@ -8,7 +8,9 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 8000;
 
-mongoose.connect(`mongodb://${process.env.MONGO_URL}:27017/dbsantoryu`, {
+const MONGO_URL = process.env.ENV === "local" ? "host.docker.internal" : "localhost"
+
+mongoose.connect(`mongodb://${MONGO_URL}:27017/dbsantoryu`, {
       useNewUrlParser: true,
       serverSelectionTimeoutMS: 5000
   })

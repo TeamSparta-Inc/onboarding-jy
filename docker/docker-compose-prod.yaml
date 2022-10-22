@@ -6,10 +6,6 @@ services:
     image: 497217256558.dkr.ecr.ap-northeast-1.amazonaws.com/santoryu-backend-prod:latest
     networks:
       - santoryu-backend-network
-    environment:
-      - ENV=local
-      - TZ=Asia/Seoul
-      - MONGO_URL=localhost
 
   proxy:
     container_name: santoryu-nginx

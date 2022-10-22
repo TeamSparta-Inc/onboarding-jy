@@ -9,6 +9,8 @@ COPY ["src/", "./src/"]
 
 ARG ENV
 
+ENV ENV=${ENV}
+
 # # 불필요한 파일 제거
 # RUN ["/bin/sh", "-c", "find . ! -name node_modules -maxdepth 1 -mindepth 1 -exec rm -rf {} \\;"]
 

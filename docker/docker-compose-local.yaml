@@ -8,10 +8,7 @@ services:
       - $PWD/../src:/opt/app/src
     networks:
       - santoryu-backend-network
-    environment:
-      - ENV=local
-      - TZ=Asia/Seoul
-      - MONGO_URL=host.docker.internal
+
   proxy:
     container_name: santoryu-nginx
     image: santoryu-nginx-local:latest
