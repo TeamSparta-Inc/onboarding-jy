@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-northeast-2:497217256558:task-definition/santoryu-td:8"
+        TaskDefinition: "arn:aws:ecs:ap-northeast-2:497217256558:task-definition/santoryu-td:11"
         LoadBalancerInfo:
           ContainerName: "santoryu-nginx-prod"
           ContainerPort: 80

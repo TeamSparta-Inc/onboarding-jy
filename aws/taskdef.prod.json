@@ -54,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "santoryu-backend-prod"
+      "name": "santoryu-backend-container"
     },
     {
       "dnsSearchDomains": null,
@@ -108,7 +108,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "santoryu-nginx-prod"
+      "name": "santoryu-nignx-container"
     },
     {
       "dnsSearchDomains": null,
@@ -141,7 +141,7 @@
         {
           "readOnly": null,
           "containerPath": "/data/db",
-          "sourceVolume": "santoryu-efs-volume"
+          "sourceVolume": "sanotoryu-efs-volume"
         }
       ],
       "workingDirectory": null,
@@ -168,7 +168,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "santoryu-mongo-prod"
+      "name": "santoryu-mongo-container"
     }
   ],
   "placementConstraints": [],
@@ -178,7 +178,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:497217256558:task-definition/santoryu-td:8",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:497217256558:task-definition/santoryu-td:11",
   "family": "santoryu-td",
   "requiresAttributes": [
     {
@@ -263,8 +263,8 @@
     "operatingSystemFamily": "LINUX",
     "cpuArchitecture": null
   },
-  "cpu": "1024",
-  "revision": 8,
+  "cpu": "2048",
+  "revision": 11,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
@@ -281,7 +281,7 @@
         "transitEncryption": "DISABLED",
         "rootDirectory": "/"
       },
-      "name": "santoryu-efs-volume",
+      "name": "sanotoryu-efs-volume",
       "host": null,
       "dockerVolumeConfiguration": null
     }
